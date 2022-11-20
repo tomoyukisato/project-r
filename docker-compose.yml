@@ -1,4 +1,7 @@
 version: "3.8"
+networks:
+  react_express:
+    driver: bridge
 services:
   front:
     build: 
@@ -25,5 +28,38 @@ services:
       - "6006:6006"
     volumes:
       - ./app:/app
+    networks:
+      - react_express
     # environment:
     #   - NODE_ENV=development
+  server:  # Express用のコンテナ
+    build: ./server
+    container_name: server
+    tty: true
+    volumes:
+      - ./server:/server
+    working_dir: "/server"
+    ports:
+      - 3002:3000
+    command: npm run dev
+    networks:
+      - react_express
+  # mysql:
+  #   build: ./database  # Dockerfileの親フォルダパス
+  #   container_name: mysql-container  # コンテナ名
+  #   hostname: mysql-server  # ホスト名
+  #   platform: linux/x86_64
+  #   command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql  # volumeのエントリポイント
+  #     - ./database/my.cnf:/etc/mysql/conf.d/my.cnf  # cnfファイル
+  #     # - ./database/mysql/sql/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql # 起動時に実行するsqlファイル
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password  # rootユーザーのパスワード
+  #     TZ: Japan
+  #   ports:
+  #     - 3306:3306  # 公開ポート番号:3306(デフォルト値）
+  #   restart: always
+# volumes:
+#   mysql-data:
+#     name: db-data
