@@ -10,8 +10,12 @@ services:
     volumes:
       - ./app:/app
     working_dir: /app
+    dns:
+      - 8.8.8.8
+      - 9.9.9.9
     ports:
       - 3000:3000
+      - 9005:9005
       # - 6006:6006      
     tty: true
     stdin_open: true
@@ -44,22 +48,53 @@ services:
     command: npm run dev
     networks:
       - react_express
-  # mysql:
-  #   build: ./database  # Dockerfileの親フォルダパス
-  #   container_name: mysql-container  # コンテナ名
-  #   hostname: mysql-server  # ホスト名
-  #   platform: linux/x86_64
-  #   command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-  #   volumes:
-  #     - mysql-data:/var/lib/mysql  # volumeのエントリポイント
-  #     - ./database/my.cnf:/etc/mysql/conf.d/my.cnf  # cnfファイル
-  #     # - ./database/mysql/sql/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql # 起動時に実行するsqlファイル
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: password  # rootユーザーのパスワード
-  #     TZ: Japan
-  #   ports:
-  #     - 3306:3306  # 公開ポート番号:3306(デフォルト値）
-  #   restart: always
-# volumes:
-#   mysql-data:
-#     name: db-data
+  mysqldb:
+    image: mysql:8.0
+    container_name: mysqldb
+    # env_file:
+    #   - ".env"
+    volumes:
+      - db-store:/var/lib/mysql
+      - ./database/logs:/var/log/mysql
+      - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_DATABASE: 'db'
+      # MYSQL_USER: '${DB_USERNAME}'
+      # MYSQL_PASSWORD: '${DB_PASSWORD}'
+      # MYSQL_ROOT_USER: root
+      # MYSQL_ROOT_PASSWORD: '${ROOT_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: password
+      # MYSQL_ROOT_HOST: '%'
+      TZ: '${TZ}'
+    ports:
+      - ${DB_PORT}:3306 # 公開ポート番号:3306(デフォルト値）
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password --sort_buffer_size=1073741824
+    networks:
+      - react_express   
+    # command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    # env_file:
+    #   - ".env"
+    depends_on:
+      - mysqldb
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mysql_host
+      # - PMA_HOST=${DB_HOST}
+      # - PMA_USER=${DB_USERNAME}
+      # - PMA_PASSWORD=${DB_PASSW\ORD}
+      # - MYSQL_USER=${DB_USERNAME}
+      # - MYSQL_PASSWORD=${DB_PASSWORD}
+      # - MYSQL_ROOT_PASSWORD=${ROOT_PASSWORD}
+    ports:
+      - "8001:80"
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
+    networks:
+      - react_express
+volumes:
+  db-store:

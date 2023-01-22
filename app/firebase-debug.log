@@ -1,0 +1,86 @@
+[debug] [2022-11-20T06:06:20.551Z] ----------------------------------------------------------------------
+[debug] [2022-11-20T06:06:20.553Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2022-11-20T06:06:20.554Z] CLI Version:   11.16.1
+[debug] [2022-11-20T06:06:20.554Z] Platform:      linux
+[debug] [2022-11-20T06:06:20.554Z] Node Version:  v16.13.0
+[debug] [2022-11-20T06:06:20.555Z] Time:          Sun Nov 20 2022 06:06:20 GMT+0000 (Coordinated Universal Time)
+[debug] [2022-11-20T06:06:20.555Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-20T06:06:20.562Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-20T06:06:20.562Z] > authorizing via signed-in user (michinoku.fmbsato@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /app
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-11-20T06:14:56.630Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-11-20T06:14:57.348Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-11-20T06:14:57.349Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project project-r-18367 (project-r) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2022-11-20T06:19:07.931Z] ----------------------------------------------------------------------
+[debug] [2022-11-20T06:19:07.933Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2022-11-20T06:19:07.934Z] CLI Version:   11.16.1
+[debug] [2022-11-20T06:19:07.934Z] Platform:      linux
+[debug] [2022-11-20T06:19:07.934Z] Node Version:  v16.13.0
+[debug] [2022-11-20T06:19:07.935Z] Time:          Sun Nov 20 2022 06:19:07 GMT+0000 (Coordinated Universal Time)
+[debug] [2022-11-20T06:19:07.935Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-20T06:19:07.942Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-20T06:19:07.943Z] > authorizing via signed-in user (michinoku.fmbsato@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /app
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-11-20T06:19:38.745Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-11-20T06:19:39.390Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-11-20T06:19:39.390Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project project-r-18367 (project-r) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

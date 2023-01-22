@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.10.14",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,13 +14,24 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "@types/react-router-dom": "^5.3.3",
+    "@uiw/react-markdown-preview": "^4.1.6",
+    "antd": "^5.1.2",
+    "axios": "^1.2.0",
+    "cors": "^2.8.5",
     "degit": "^2.8.4",
+    "firebase": "^9.14.0",
+    "firebase-tools": "^11.16.1",
+    "movie-trailer": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.41.1",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "react-youtube": "^10.1.0",
     "redux": "^4.2.0",
+    "sass": "^1.56.1",
     "typescript": "^4.9.3",
+    "use-react-router-breadcrumbs": "^4.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,7 +52,7 @@
     "overrides": [
       {
         "files": [
-          "**/*.stories.*"
+          "**/*.ui.*"
         ],
         "rules": {
           "import/no-anonymous-default-export": "off"

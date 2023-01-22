@@ -1,0 +1,91 @@
+import { Sequelize } from "sequelize";
+
+
+const {DataTypes} = Sequelize;
+
+const host = 'mysqldb';
+const database = 'db';
+const username = 'root';
+const password = 'password';
+
+export const sequelize = new Sequelize(database, username, password, {
+    host: host,
+    dialect: 'mysql',
+    operatorsAliases: false,
+    pool: {
+        min: 0,
+        max: 5,
+        acuire: 30000,
+        idle  : 10000
+    }
+});
+
+sequelize.authenticate()
+    .then(()    => {console.log('Success test connection');})
+    .catch((error) => { console.log('Failure test connection', error);});
+
+export const User = sequelize.define(
+    "user",
+    {
+      sub: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      nickname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
+    { underscored: true },
+  );
+
+export const Restaurant = sequelize.define(
+    "restaurant",
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: DataTypes.STRING,
+      },
+      map: {
+        type: DataTypes.TEXT,
+      },
+    },
+    { underscored: true },
+  );
+  
+export const Review = sequelize.define(
+  "review",
+  {
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User,
+      },
+    },
+    restaurantId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Restaurant,
+      },
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    comment: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  { underscored: true },
+);
+
+Restaurant.hasMany(Review);
+Review.belongsTo(Restaurant);
+User.hasMany(Review);
+Review.belongsTo(User);
